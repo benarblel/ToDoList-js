@@ -2,24 +2,75 @@ body {
     margin: 0;
     height: 100vh;
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center; 
+    font-family: Arial, sans-serif;
 }
 
-.h1 {
+.container {
+    display: flex;
+    gap: 20px;
+}
+
+.dates-column {
+    width: 150px;
+    background: #f9f9f9;
+    padding: 12px;
+    border-radius: 8px;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+}
+
+.dates-column h2 {
+    margin: 0 0 10px 0;
+    font-size: 1.1rem;
+}
+
+.dates-column ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.dates-column li {
+    padding: 6px 8px;
+    margin-bottom: 6px;
+    background: #eef6ff;
+    border-radius: 6px;
+    cursor: pointer;
+    text-align: center;
+}
+
+.dates-column li:hover {
+    background: #d0e4ff;
+}
+
+.todo-column {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h1 {
     text-align: center;
     margin-bottom: 20px;
 }
 
 .task-input {
     display: flex;
+    margin-bottom: 20px;
 }
 
 .task-input input {
     font-size: 1rem;
     border: 2px solid #ccc;
     width: 250px;
+}
+
+.task-input input[type="date"] {
+    padding: 8px;
+    border-radius: 6px;
+    border: 2px solid #ccc;
 }
 
 .task-input button {
@@ -32,4 +83,18 @@ body {
 
 .task-input button:hover {
     background-color: #292727;
+}
+
+#task-list {
+    list-style: none;
+    padding: 0;
+    width: 100%;
+}
+
+#task-list li {
+    padding: 10px;
+    margin-bottom: 8px;
+    background: #fbfdff;
+    border-radius: 6px;
+    border: 1px solid #e6eef9;
 }
