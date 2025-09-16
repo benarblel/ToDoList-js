@@ -10,18 +10,21 @@ function addTask() {
     li.dataset.date = taskDate;
 
     const taskList = document.getElementById('task-list');
+    taskList.appendChild(li);
+
     const formattedDate = new Date(taskDate).toLocaleDateString('fr-FR');
     const datesList = document.getElementById('dates-list');
     const existingDates = Array.from(datesList.children).map(li => li.textContent);
 
-    taskList.appendChild(li);
-    
     if (!existingDates.includes(formattedDate)) {
       const dateLi = document.createElement('li');
       dateLi.textContent = formattedDate;
       datesList.appendChild(dateLi);
       dateLi.addEventListener('click', () => filterTasksByDate(taskDate));
     }
+
+    filterTasksByDate(taskDate);  
+
     input.value = "";
   }
 }
@@ -31,11 +34,7 @@ function filterTasksByDate(date) {
   const tasks = taskList.querySelectorAll('li');
 
   tasks.forEach(li => {
-    if (li.dataset.date === date) {
-      li.style.display = 'list-item';
-    } else {
-      li.style.display = 'none';
-    }
+    li.style.display = li.dataset.date === date ? 'list-item' : 'none';
   });
 }
 
@@ -46,6 +45,9 @@ window.onload = () => {
     dateInput.value = today;
     dateInput.min = today;
   }
+
+  const today = new Date().toISOString().split('T')[0];
+  filterTasksByDate(today);
 
   const datesList = document.getElementById('dates-list');
   datesList.querySelectorAll('li').forEach(li => {
